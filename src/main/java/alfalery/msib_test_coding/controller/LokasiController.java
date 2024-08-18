@@ -13,7 +13,7 @@ import alfalery.msib_test_coding.service.LokasiService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/locations")
+@RequestMapping("/lokasi")
 public class LokasiController {
 
     @Autowired
@@ -55,13 +55,19 @@ public class LokasiController {
     }
 
     @DeleteMapping(
-            path = "/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public String remove(@PathVariable("id") Long id) {
+    path = "/{id}",
+    produces = MediaType.APPLICATION_JSON_VALUE
+)
+public ResponseEntity<?> remove(@PathVariable("id") Long id) {
+    try {
         lokasiService.remove(id);
-        return "OK";
+        return ResponseEntity.ok("Location with ID " + id + " has been successfully deleted");
+    } catch (Exception e) {
+        // Log the exception
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Location with ID " + id + " not found");
     }
+}
+
 
     @GetMapping(
             path = "/",

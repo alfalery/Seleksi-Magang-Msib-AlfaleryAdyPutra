@@ -71,12 +71,13 @@ public class ProyekController {
     public ResponseEntity<?> remove(@PathVariable("id") Long id) {
         try {
             proyekService.remove(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Project with ID " + id + " has been successfully deleted");
         } catch (Exception e) {
             // Log the exception
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Project with ID " + id + " not found");
         }
     }
+    
 
     @GetMapping(
         path = "/",
