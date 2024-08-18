@@ -1,0 +1,13 @@
+package alfalery.msib_test_coding;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MsibTestCodingApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
